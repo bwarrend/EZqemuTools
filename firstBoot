@@ -1,0 +1,16 @@
+#!/bin/lua
+
+function tellEm()
+    print("USEAGE: ./firstBoot HDDname ISOname Memory")
+    os.exit()
+end
+
+if arg[1] == nil then tellEm() end
+if arg[2] == nil then tellEm() end
+if arg[3] == nil then tellEm() end
+
+hddName = arg[1]
+isoName = arg[2]
+memory = arg[3]
+
+os.execute("qemu-system-x86_64 -hda "..hddName.." -cdrom "..isoName.." -boot d -m "..memory.." -enable-kvm")

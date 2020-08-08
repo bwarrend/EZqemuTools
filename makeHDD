@@ -1,0 +1,18 @@
+#!/bin/lua
+
+if arg[1] == nil then
+        print("Name the HDD:")
+        hddName = io.read()
+else
+    hddName = arg[1]
+end
+
+if arg[2] == nil then
+    print("How many Gbs for the HDD?")
+    hddSize = io.read()
+else
+    hddSize = arg[2]
+end
+
+
+os.execute("qemu-img create -f qcow2 "..hddName..".qcow "..hddSize.."G")

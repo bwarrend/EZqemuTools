@@ -1,0 +1,20 @@
+#!/bin/lua
+function tellEm()
+    print("USEAGE: ./createBootScript VMname HDDname memory")
+    os.exit()
+end
+
+
+if arg[1] == nil then tellEm() end
+if arg[2] == nil then tellEm() end
+if arg[3] == nil then tellEm() end
+
+VMname = arg[1]
+hddName = arg[2]
+memory = arg[3]
+
+os.execute("touch "..VMname)
+os.execute("echo \"#!/bin/bash\" > "..VMname)
+
+os.execute("echo \"qemu-system-x86_64 -hda "..hddName.." -m "..memory.." -enable-kvm\" >> "..VMname)
+os.execute("chmod u+x "..VMname)
